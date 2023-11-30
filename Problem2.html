@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1, initial-scale=1.0" />
+    <title>Problem 2</title>
+    <script>
+        var list = [
+            1234,
+            "1234abc",
+            0.15,
+            "3.14ivan",
+            Infinity,
+            99999999999999999999,
+        ];
+
+        document.addEventListener("DOMContentLoaded", function () {
+            initializeDataRow();
+        });
+
+        function initializeDataRow() {
+            var dataRow = document.getElementById("dataRow");
+            dataRow.innerHTML = "";
+
+            for (let i = 0; i < 5; i++) {
+                let value = list[i];
+                let row = document.createElement("tr");
+                let column1 = document.createElement("td");
+                column1.textContent = value;
+                row.appendChild(column1);
+
+                for (let i = 1; i < 6; i++) {
+                    let column = document.createElement("td");
+                    column.textContent = "?";
+                    row.appendChild(column);
+                }
+
+                dataRow.appendChild(row);
+            }
+        }
+
+        function Show() {
+            var dataRow = document.getElementById("dataRow");
+            dataRow.innerHTML = "";
+
+            for (let i = 0; i < list.length; i++) {
+                let value = list[i];
+
+                let row = document.createElement("tr");
+
+                let column1 = document.createElement("td");
+                let column2 = document.createElement("td");
+                let column3 = document.createElement("td");
+                let column4 = document.createElement("td");
+                let column5 = document.createElement("td");
+                let column6 = document.createElement("td");
+
+                column1.textContent = value;
+                row.appendChild(column1);
+
+                column2.textContent = parseInt(value);
+                row.appendChild(column2);
+
+                column3.textContent = parseFloat(value);
+                row.appendChild(column3);
+
+                column4.textContent = Number(value);
+                row.appendChild(column4);
+
+                column5.textContent = +value;
+                row.appendChild(column5);
+
+                column6.textContent = value | 0;
+                row.appendChild(column6);
+                dataRow.appendChild(row);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table border="solid black 1px">
+        <tr>
+            <td>str</td>
+            <td>parseInt(str)</td>
+            <td>parseFloat(str)</td>
+            <td>Number(str)</td>
+            <td>+str</td>
+            <td>str|0</td>
+        </tr>
+        <tbody id="dataRow"></tbody>
+    </table>
+    <input type="button" value="click" onclick="Show()" />
+</body>
+
+</html>

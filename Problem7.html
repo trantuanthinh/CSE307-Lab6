@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 7</title>
+    <script>
+        function GetNumber(number) {
+            let listNumber = [];
+            let start = 0;
+            let end = 0;
+            let temp = 0;
+            let j = 0;
+            for (let i = 0; i < number.length; i++) {
+                if (number[i] === ',' || i == number.length - 1) {
+                    end = i;
+                    if (i == number.length - 1) {
+                        end += 1;
+                    }
+                    temp = parseFloat(number.substring(start, end));
+                    start = i + 1;
+                    listNumber[j++] = temp;
+                }
+            }
+            return listNumber;
+        }
+
+        function CheckValid(listNumber) {
+            for (let i = 0; i < listNumber.length; i++) {
+                if (number <= 1 && 100000000 <= number) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function FindMax(listNumber) {
+            let max = Number.MIN_SAFE_INTEGER;
+            for (let i = 0; i < listNumber.length; i++) {
+                number = listNumber[i];
+                if (number > max) {
+                    max = number;
+                }
+            }
+            return max;
+        }
+
+        function FindMin(listNumber) {
+            let min = Number.MAX_SAFE_INTEGER;
+            for (let i = 0; i < listNumber.length; i++) {
+                number = listNumber[i];
+                if (number < min) {
+                    min = number;
+                }
+            }
+            return min;
+        }
+
+        function CalculateSum(listNumber) {
+            let sum = 0;
+            for (let i = 0; i < listNumber.length; i++) {
+                sum += listNumber[i];
+            }
+            return sum;
+        }
+
+        function CalculateAverage(listNumber) {
+            let sum = CalculateSum(listNumber);
+            let length = listNumber.length;
+            let average = sum / length;
+            return average;
+        }
+
+        function Print() {
+            let number = document.getElementById("number").value;
+            let listNumber = GetNumber(number);
+            let max = 0;
+            let min = 0;
+            let sum = 0;
+            let average = 0
+            if (CheckValid(listNumber)) {
+                max = FindMax(listNumber);
+                min = FindMin(listNumber);
+                sum = CalculateSum(listNumber);
+                average = CalculateAverage(listNumber)
+            }
+            let string = `max = ${max}, min = ${min}, sum = ${sum}, average = ${average}`;
+            document.getElementById("printCalculate").innerHTML = string;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Numbers from 1 to N</h1>
+    <p>Enter numbers seperated by commas (1 &lt;= number &lt;= 100.000.000):</p>
+    <input id="number" type="text">
+    <button onclick="Print()">Calculate MMSA</button>
+    <h5 id="printCalculate"></h5>
+</body>
+
+</html>

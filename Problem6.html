@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 6</title>
+    <script>
+        function Print() {
+            let number = parseFloat(document.getElementById("number").value);
+            let flag = true;
+            if (0 < number && number < ((2 ** 32) / 2 - 1) && (Number.isInteger(number))) {
+                for (let i = 2; i < Math.sqrt(number); i++) {
+                    if (number % i == 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    document.getElementById("printCheck").innerHTML = true;
+                } else {
+                    document.getElementById("printCheck").innerHTML = false;
+                }
+            } else {
+                document.getElementById("printCheck").innerHTML = 'Please enter a valid positive number';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Numbers from 1 to N</h1>
+    <p>Enter a positive integer N (0 &lt; number &lt; 2^32):</p>
+    <input id="number" type="number">
+    <button onclick="Print()">Prime Numbers</button>
+    <h5 id="printCheck"></h5>
+</body>
+
+</html>
